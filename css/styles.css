@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
+body {
+    background-color: black;
+    margin: 0;
+}
+
+/*loader*/
+
+.loader {
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #131313;
+}
+
+.loader img {
+    height: 15rem;
+    width: auto;
+}
+
+/* Default styles for the header */
+
+/*header*/
+
+.header {
+    font-family: 'Koulen', cursive;
+    height: 100vh;
+}
+
+.top {
+    background-color: black;
+}
+
+.contenedor {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bmenu {
+    width: auto;
+}
+
+.bmenu ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    font-size: 30px;
+    margin: 10px;
+    padding: 0;
+}
+
+.bmenu ul li {
+    margin: 0;
+    padding: 29px 35px;
+}
+
+.bmenu ul li a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.bmenu ul li a:hover {
+    color: #ffee00;
+    text-decoration: underline;
+}
+
+.bmenu ul img {
+    width: 5vw;
+    margin: 20px;
+}
+
+
+.video video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    z-index: -1;
+}
