@@ -1,7 +1,6 @@
-let menu = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+const menuHamburger = document.querySelector("#menu-icon")
+const navLinks = document.querySelector(".navbar")
 
-menu.onclick = () => {
-    menu.classList.toggle('ri-close-line');
-    navbar.classList.toggle('open');
-};
+menuHamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-menu')
+})
