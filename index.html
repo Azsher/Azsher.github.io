@@ -26,24 +26,25 @@
 
     <!-- ----------HEADER---------- -->
     <header class="Header">
-        <section id="Inicio">
+        <section >
             <div class="">
                 <ul class="navbar">
                     <li><a href="#Inicio" id="inicio-navbar">Inicio</a></li>
                     <li><a href="./portafolio.html">Portafolio</a></li>
                     <img src="img/Logo.png" alt="logo">
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#Contacto">Contacto</a></li>
                 </ul>
             </div>
-
             <div class="ri-menu-fill" id="menu-icon"></div>
         </section>
     </header>
     <!-- --------------------------- -->
 
 
+
+
     <!-- ----------VIDEO---------- -->
-    <section class="video-clip">
+    <section class="video-clip" id="Inicio">
         <div class="video">
             <video autoplay muted loop poster="./img/poster.png">
                 <source src="./vid/Fondo.mp4">
@@ -56,15 +57,7 @@
     <!-- ---------BIOGRAFIA ---------->
 
     <section class="Biografia" id="Biografia">
-        <!-- <div class="container">
-            <div class="bubbles">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div> -->
         <div class="main">
-
             <img src="./img/Foto.jpg" class="img-fluid" alt="Foto">
             <div class="bio-texto">
                 <h1>Biografia</h1>
@@ -80,28 +73,28 @@
                 </p>
                 <button>CV</button>
             </div>
-        </div>  
+        </div>
     </section>
     <!-- ---------------------------- -->
 
     <!-- ---------Slider ---------->
 
 
-    
+
 
     <section class="comparison-images">
         <h1>Color</h1>
-        <div class="image-comparison">         
+        <div class="image-comparison">
             <div class="images-container">
                 <img src="./img/1.jpg" alt="imagen1" class="before-image">
                 <img src="./img/2.jpg   " alt="imagen2" class="after-image">
                 <div class="slider-line"></div>
                 <div class="slider-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                </svg>
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                    </svg>
                 </div>
                 <input type="range" class="slider" min="0" max="100%">
             </div>
@@ -109,10 +102,10 @@
 
     </section>
 
-<!-- ---------------------------- -->
+    <!-- ---------------------------- -->
     <!-- ---------Contacto ---------->
-    
-    <section class="Contacto">
+
+    <section class="Contacto" id="Contacto">
         <div class="content">
             <div class="contac-wrapper">
                 <div class="contact-form">
@@ -120,28 +113,49 @@
                     <form action="">
                         <p>
                             <label for="Name">Nombre</label>
-                            <input type="text" name="fullname" id="Name" >
+                            <input type="text" name="fullname" id="Name">
                         </p>
                         <p>
-                            <label for="">Email</label>
+                            <label for="">Email <span>(requerido)</span></label>
                             <input type="email" name="" id="">
                         </p>
                         <p>
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone" pattern="[9]{1}[0-9]{2} -[0-9]{3}-[0-9]{3}" required />
+                            <label for="phone">Phone <span>(requerido)</span></label>
+                            <input type="tel" id="phone" name="phone" pattern="[9]{1}[0-9]{2} -[0-9]{3}-[0-9]{3}"
+                                required />
                         </p>
                         <p>
-                            <label for="message">Mensaje</label>
-                            <textarea name="message" id="" rows="3"></textarea>
+                            <label for="video-duration">Duracion del video <span>(requerido)</span></label>
+                            <input type="text" id="video" name="vide-duration">
                         </p>
                         <p>
+                            <label for="camera"">Camara utilizada <span>(requerido)</span></label>
+                            <input type="text" id="camera" name="camera">
+                        </p>
+                        <p>
+                            <label for="date">Fecha de entrega deseada <span>(requerido)</span></label>
+                            <input type="date" id="date" name="date">
+                        </p>
+                        <p>
+                            <label for="budget">Cual es su presupuesto para el colorizado <span>(requerido)</span></label>
+                            <input type="text" id="budget" name="budget">
+                        </p>
+                        <p>
+                            <label for="video-link">Comparta un enlace de YouTube o Vimeo no listado a su video. </label>
+                            <input type="text" id="video-link" name="video-link">
+                        </p>
+                        <p class="block">
+                            <label for="message">Siéntase libre de describir su proyecto en detalle.</label>
+                            <textarea name="message" id="message" rows="3"></textarea>
+                        </p>
+                        
+                        <p class="block">
                             <button type="submit">Enviar</button>
                         </p>
                     </form>
                 </div>
-                <div class="contact-info">
-
-                </div>
+                <!-- <div class="contact-info">
+                </div> -->
             </div>
         </div>
     </section>
