@@ -1,0 +1,212 @@
+@import url('https://fonts.cdnfonts.com/css/lovely');
+
+body {
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+    background-size: 400% 400%;
+    animation: animateBackground 10s infinite linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 🔥 Animación de fondo fluida */
+@keyframes animateBackground {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-stack {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+/* 🔥 Estilo de las cartas */
+.card {
+    position: absolute;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #ffffff, #ffe0f0);
+    border-radius: 20px;
+    border: 4px solid #ff80ab;
+    box-shadow: 5px 5px 15px rgba(255, 64, 129, 0.3), -5px -5px 15px rgba(255, 64, 129, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    font-family: 'Lovely', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔥 Efecto hover: Resplandor alrededor */
+.card:hover {
+    box-shadow: 8px 8px 20px rgba(255, 64, 129, 0.5), -8px -8px 20px rgba(255, 64, 129, 0.3);
+    transform: scale(1.02);
+}
+
+/* 🔥 Efecto cuando una carta está activa */
+.card.active {
+    transform: scale(1.05);
+    box-shadow: 10px 10px 25px rgba(255, 64, 129, 0.6), -10px -10px 25px rgba(255, 64, 129, 0.4);
+}
+
+/* 🔥 La carta siguiente tiene un poco de transparencia */
+.card.next {
+    opacity: 0.85;
+}
+
+/* 🔥 Estilo del botón de flecha */
+.arrow-button {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #ff80ab, #ff4081);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 4px 10px rgba(255, 64, 129, 0.5);
+    transition: all 0.3s ease;
+    margin-left: 30px;
+}
+
+/* 🔥 Efecto hover: Cambio de color y sombra */
+.arrow-button:hover {
+    background: linear-gradient(135deg, #ff4081, #ff1744);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(255, 64, 129, 0.8);
+}
+
+/* 🔥 Efecto click: Disminuye ligeramente para simular presión */
+.arrow-button:active {
+    transform: scale(0.95);
+}
+
+/* 🔥 Ajuste del contenedor del SVG */
+.svg-container {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 150px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* 🔥 Texto en SVG con efecto de escritura */
+.svg-text {
+    font-family: 'Lovely', sans-serif;
+    font-size: 50px;
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+/* 🔥 Animación de escritura */
+.svg-text.animate-text {
+    animation: writeText 4s linear forwards;
+}
+
+@keyframes writeText {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* 🔥 Botón para revelar el mensaje */
+.reveal-button {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: #ff4081;
+    border: 2px solid #ff4081;
+    padding: 12px 25px;
+    font-size: 20px;
+    font-family: 'Lovely', sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reveal-button:hover {
+    background-color: #ff4081;
+    color: white;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* 🔥 Contenedor de monos aleatorios */
+.monos-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* 🔥 Estilo de los monos aleatorios */
+.monito-random {
+    position: absolute;
+    width: 50px; /* Tamaño base */
+    height: 50px;
+    border-radius: 50%;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    opacity: 0; /* Comienza invisible */
+}
+
+/* 🔥 Animación de aparición */
+@keyframes aparecer {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 🔥 Animación de desaparición */
+@keyframes desaparecer {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+/* 🔥 Cuando el monito aparece */
+.monito-visible {
+    animation: aparecer 1.5s forwards;
+}
+
+/* 🔥 Cuando el monito desaparece */
+.monito-oculto {
+    animation: desaparecer 1.5s forwards;
+}
+
+/* 🔥 Estilo para "Created by" */
+.footer {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-family: 'Lovely', sans-serif;
+    color: white;
+    opacity: 0.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}

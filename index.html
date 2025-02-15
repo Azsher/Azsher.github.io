@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lizeth</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card-stack" id="cardContainer">
+            <div class="card">No hay dia que no me sorprendas con tu corazon tan grande y tu manera unica de hacer sentir especial a quienes te rodean. Eres simplemente increible y te admiro mucho.</div>
+            <div class="card">No se como lo haces, pero siempre logras sacarme una sonrisa con tu autenticidad. Eres una persona unica y te valoro mucho. 😝</div>
+            <div class="card">Se que esto no es mucho, pero espero que pueda expresar todo el carino que te tengo 🐵. ¡Nunca dejes de brillar!</div>
+        </div>
+        <button class="arrow-button" onclick="nextCard()">➡</button>
+    </div>
+
+    <!-- Botón para activar la animación de escritura y generar monos -->
+    <button class="reveal-button" onclick="startWriting()">Dale click aqui</button>
+
+    <!-- Contenedor del mensaje animado con el monito -->
+    <div class="svg-container">
+        <svg id="valentineSVG" viewBox="0 0 800 200">
+            <text x="50%" y="50%" text-anchor="middle" class="svg-text">Feliz San Valentin Lizeth</text>
+        </svg>
+    </div>
+
+    <!-- Contenedor de monos aleatorios -->
+    <div class="monos-container"></div>
+
+    <footer>
+        <div class="footer">Created by Oscar</div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let container = document.getElementById("cardContainer");
+            let cards = Array.from(container.children);
+
+            cards[0].classList.add("active");
+            if (cards[1]) {
+                cards[1].classList.add("next");
+            }
+
+            cards.forEach((card, index) => {
+                card.style.zIndex = cards.length - index;
+            });
+        });
+
+        function nextCard() {
+            let container = document.getElementById("cardContainer");
+            let cards = Array.from(container.children);
+
+            if (cards.length > 1) {
+                let firstCard = document.querySelector(".card.active");
+                let secondCard = document.querySelector(".card.next");
+
+                if (!firstCard || !secondCard) return;
+
+                firstCard.style.transform = "translateX(-120%) rotate(-10deg)";
+                firstCard.style.opacity = "0";
+
+                secondCard.classList.add("active");
+                secondCard.classList.remove("next");
+                secondCard.style.transform = "scale(1)";
+
+                setTimeout(() => {
+                    container.appendChild(firstCard);
+                    firstCard.style.transition = "none";
+                    firstCard.style.transform = "translateX(0) rotate(0deg)";
+                    firstCard.style.opacity = "1";
+
+                    firstCard.classList.remove("active");
+                    firstCard.classList.add("next");
+
+                    let newNextCard = document.querySelector(".card:not(.active):not(.next)");
+                    if (newNextCard) {
+                        newNextCard.classList.add("next");
+                    }
+
+                    let updatedCards = Array.from(container.children);
+                    updatedCards.forEach((card, index) => {
+                        card.style.zIndex = updatedCards.length - index;
+                    });
+
+                    setTimeout(() => {
+                        firstCard.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+                    }, 50);
+                }, 800);
+            }
+        }
+
+        function startWriting() {
+            let svgText = document.querySelector('.svg-text');
+            let svgContainer = document.querySelector('.svg-container');
+
+            svgContainer.style.opacity = "1";
+            svgText.classList.add('animate-text');
+
+            generateMonos(); // Comienza a generar monos
+        }
+
+        function generateMonos() {
+            let container = document.querySelector(".monos-container");
+
+            setInterval(() => {
+                let mono = document.createElement("img");
+                mono.src = "monito.png";
+                mono.classList.add("monito-random");
+
+                let size = Math.random() * (80 - 30) + 30; // Tamaño aleatorio entre 30px y 80px
+                mono.style.width = `${size}px`;
+                mono.style.height = `${size}px`;
+
+                let posX = Math.random() * (window.innerWidth - size);
+                let posY = Math.random() * (window.innerHeight - size);
+
+                mono.style.left = `${posX}px`;
+                mono.style.top = `${posY}px`;
+
+                container.appendChild(mono);
+                mono.classList.add("monito-visible");
+
+                setTimeout(() => {
+                    mono.classList.add("monito-oculto");
+                    setTimeout(() => {
+                        mono.remove(); // Desaparece después de la animación
+                    }, 1000);
+                }, 2500); // Se mantiene visible 2.5 segundos antes de desaparecer
+
+            }, 1000); // Se genera un nuevo mono cada segundo
+        }
+    </script>
+
+</body>
+</html>
